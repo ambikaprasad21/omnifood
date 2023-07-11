@@ -1,0 +1,335 @@
+/* rem and em do not depend on html font size in media queries.
+Instead 1rem = 1em = 16px.
+
+
+we should not use rem in media queries and instead we should use em
+em is current size.
+*/
+
+/*
+FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+
+*/
+
+/* 1344/16 = 84*/
+/*for setting breakpoints we use em unit*/
+
+/***********************************/
+/* Below 1344px (smaller desktops)*/
+/***********************************/
+@media (max-width: 84em) {
+  .hero {
+    max-width: 120rem;
+  }
+  .heading-primary {
+    font-size: 4.4rem;
+  }
+
+  /* copy the css code for gallery and delete the property that are required to change while. */
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/***********************************/
+/* Below 1200px (landscape tablets )*/
+/***********************************/
+
+@media (max-width: 75em) {
+  html {
+    /* 9/16 = 56.25% */
+    font-size: 56.25%;
+  }
+
+  .grid {
+    column-gap: 4.8rem;
+    row-gap: 6.4rem;
+  }
+
+  .heading-secondary {
+    /* still designing keeping in mind that 1rem = 10px */
+    font-size: 3.6rem;
+  }
+
+  .heading-tertiary {
+    font-size: 2.4rem;
+  }
+
+  .header {
+    padding: 0 3.2rem;
+  }
+
+  .main-nav-list {
+    gap: 3.2rem;
+  }
+
+  .hero {
+    gap: 4.8rem;
+  }
+
+  .testimonials-container {
+    padding: 9.6rem 3.2rem;
+  }
+}
+
+/***********************************/
+/* Below 944px (tablets )*/
+/***********************************/
+
+/* 940/16 = 59 */
+@media (max-width: 59em) {
+  html {
+    /* 8/16 = 0.5 = 50% */
+    font-size: 50%;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 0 8rem;
+    gap: 6.4rem;
+  }
+
+  .hero-text-box,
+  .hero-image-box {
+    text-align: center;
+  }
+
+  .hero-img {
+    width: 60%;
+  }
+
+  .delivered-meals {
+    justify-content: center;
+    margin-top: 3.2rem;
+  }
+
+  .logos img {
+    height: 2.4rem;
+  }
+
+  .step-number {
+    font-size: 7.4rem;
+  }
+
+  .meal-content {
+    padding: 2.4rem 3.2rem 3.2rem 3.2rem;
+  }
+
+  .section-testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .cta {
+    /* 3/5 = 60% 2/5= 40% */
+    grid-template-columns: 3fr 2fr;
+  }
+
+  .cta-form {
+    grid-template-columns: 1fr;
+  }
+
+  .btn--form {
+    margin-top: 1.2rem;
+  }
+
+  /* mobile navigation */
+  .btn-mobile-nav {
+    display: block;
+    z-index: 999;
+  }
+
+  .main-navigation {
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(100%);
+
+    /*transition: all 0.5s; /*by default transition is linear*/
+    transition: all 0.5s ease-in;
+
+    /* Hide navigation */
+    /* Allows no  transition at all */
+    /* display: none; */
+    /* using displya none we cannot animate the navigation */
+
+    /*  1) Hide it visually */
+    opacity: 0;
+
+    /*  2) Make it unaccessible to mouse and keyboard */
+    /* opacity set to 0 element can also be accessed by keyboard buttons */
+    pointer-events: none;
+
+    /*  3) Hide it from screen readers */
+    visibility: hidden;
+  }
+
+  .nav-open .main-navigation {
+    /* setting the opacity to 1 to make it visible */
+    /* making the main navigation visible */
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+
+    transform: translateX(0%);
+  }
+
+  /* when nav-open class exist then this .icon-mobile-nav[name="close-outline"] selector applies  */
+  .nav-open .icon-mobile-nav[name="close-outline"] {
+    /* after making the main navigation visible we need to also show the close button */
+    display: block;
+  }
+
+  .nav-open .icon-mobile-nav[name="menu-outline"] {
+    /* and we need to hide the hamburger button */
+    display: none;
+  }
+
+  .main-nav-list {
+    flex-direction: column;
+    gap: 4.8rem;
+  }
+
+  .main-nav-link:link,
+  .main-nav-link:visited {
+    font-size: 3rem;
+  }
+}
+
+/***********************************/
+/* Below 704px (smaller tablets )*/
+/***********************************/
+
+/* 704/16 = 44 */
+@media (max-width: 44em) {
+  .grid--3-cols,
+  .grid--4-cols {
+    /* redusing the grid 3 column and grid 4 column to only 2 column */
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .diets {
+    grid-column: 1/-1;
+    justify-self: center;
+  }
+
+  .heading-secondary {
+    margin-bottom: 4.8rem;
+  }
+
+  .pricing-plan {
+    width: 100%;
+  }
+
+  .grid--footer {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .logo-col,
+  .address-col {
+    grid-column: span 3;
+  }
+
+  .nav-col {
+    grid-row: 1;
+    /* we want that our nav-col occupy two columns instead of 1 */
+    grid-column: span 2;
+    margin-bottom: 3.2rem;
+  }
+}
+
+/***********************************/
+/* Below 544px (smaller tablets )*/
+/***********************************/
+
+/* 550/16 = 34 */
+
+@media (max-width: 34em) {
+  .grid {
+    row-gap: 4.8rem;
+  }
+
+  .grid--2-cols,
+  .grid--3-cols,
+  .grid--4-cols {
+    /* redusing the grid 3 column and grid 4 column to only 2 column */
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .btn,
+  .btn:link,
+  .btn:visited {
+    padding: 2.4rem 1.6rem;
+  }
+
+  .section-hero {
+    padding: 2.4rem 0 6.4rem 0;
+  }
+
+  .hero {
+    padding: 0 3.2rem;
+  }
+
+  .hero-img {
+    width: 80%;
+  }
+
+  .logos img {
+    height: 1.2rem;
+  }
+
+  .step-img-box:nth-child(2) {
+    /* the number 2 here is actually the order of the child in the container, it has nothing 
+        to do with .step-img-box this class name
+     */
+
+    grid-row: 1;
+  }
+
+  .step-img-box:nth-child(6) {
+    grid-row: 5;
+  }
+
+  /* moving the step image little bit down by using transform translate */
+  .step-img-box {
+    transform: translateY(2.4rem);
+  }
+
+  .testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+  }
+
+  .cta {
+    grid-template-columns: 1fr; /* doing this will disappear the image because that image section has no content*/
+    /* so to make the image appear even with 1fr we need to set some height manually */
+  }
+
+  .cta-img-box {
+    height: 32rem;
+    grid-row: 1;
+  }
+
+  .cta-text-box {
+    padding: 3.2rem;
+  }
+}
